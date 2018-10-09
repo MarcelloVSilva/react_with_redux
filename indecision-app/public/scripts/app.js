@@ -1,14 +1,14 @@
-console.log('teste')
+"use strict";
+
+console.log('teste');
 
 // JSX - JavaScript XML
 
-// var template = <p>This is jsx</p>;
-
 var template = React.createElement(
-    "h1",
-    {id: "someid"},
-    "Something new"
-)
+  "h1",
+  null,
+  "This is jsx Marcello"
+);
 var appRoot = document.getElementById("app");
 
-ReactDOM.render(template, appRoot)
+ReactDOM.render(template, appRoot);
