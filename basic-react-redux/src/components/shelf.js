@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Shelf extends Component {
     constructor(props) {
-        super();
+        super(props);
         this.onClickAdd = this.onClickAdd.bind(this)
         this.state = {
             shelfItems: [
@@ -12,7 +12,6 @@ class Shelf extends Component {
             ]
         }
     }
-
     onClickAdd(item){
         this.props.addItem(item)
     }
