@@ -1,20 +1,33 @@
-"use strict";
+'use strict';
 
-function square(x) {
-    return x * x;
+function add(x, y) {
+    return x + y;
 }
 
-console.log(square(3));
+console.log(add(10, 2, 111));
 
-var squareArrow = function squareArrow(x) {
-    return x * x;
+var user = {
+    name: 'Marcello',
+    cities: ['Inhumas, Goiânia'],
+    printCities: function printCities() {
+        return this.cities.map(function (city) {
+            return city;
+        });
+    }
 };
 
-console.log(squareArrow(9));
+console.log(user.printCities());
 
-var getFirstName = function getFirstName(_fullName) {
-    return _fullName.split(' ')[0];
+var multiplayer = {
+    numbers: [1, 2, 3, 4, 5],
+    multiplyBy: 2,
+    multiply: function multiply() {
+        var _this = this;
+
+        return this.numbers.map(function (number) {
+            return number * _this.multiplyBy;
+        });
+    }
 };
 
-var fullName = "Marcello Victor";
-console.log(getFirstName(fullName));
+console.log(multiplayer.multiply());
