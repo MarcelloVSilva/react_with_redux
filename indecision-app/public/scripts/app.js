@@ -36,8 +36,17 @@ var template = React.createElement(
 var user = {
     name: "Marcello",
     age: 23,
-    location: "Brazil"
+    location: "Goiânia - Goiás - Brazil"
 };
+
+function getLocation(location) {
+    if (location) return React.createElement(
+        "p",
+        null,
+        "My location is ",
+        location
+    );
+}
 
 var templateTwo = React.createElement(
     "div",
@@ -50,20 +59,15 @@ var templateTwo = React.createElement(
     React.createElement(
         "h1",
         null,
-        user.name
+        user.name ? user.name : 'Ninguém'
     ),
-    React.createElement(
+    user.age && user.age >= 23 && React.createElement(
         "p",
         null,
         "My age is ",
         user.age
     ),
-    React.createElement(
-        "p",
-        null,
-        "My location is ",
-        user.location
-    ),
+    getLocation(user.location),
     React.createElement(
         "ol",
         null,
