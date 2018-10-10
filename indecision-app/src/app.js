@@ -2,6 +2,12 @@ console.log('teste')
 
 // JSX - JavaScript XML
 
+const app = {
+    title: 'Indecision App',
+    subtitle: 'Put your life in the hands of a computer',
+    options: []
+  };
+
 const template = (
     <div>
         <h1>Marcello</h1>
@@ -26,34 +32,53 @@ function getLocation(location) {
 let count = 0 
 const menosUm = () => {
     count--
-    renderCountApp()
-    console.log("menos um")
+    render()
 }
 
 const maisUm = () => {
     count++
-    renderCountApp()
-    console.log("mais um")
+    render()
 }
 
 const reset = () => {
     count = 0
-    renderCountApp()
-    console.log("reset")
+    render()
 }
 
+const onFormSubmit = (e) => {
+    e.preventDefault()
+    const option = e.target.elements.option.value;
 
-const renderCountApp = () => {
+    if (option) {
+      app.options.push(option);
+      e.target.elements.option.value = '';
+      render();
+    }
+}
+
+const onRemoveAll = () => {
+    app.options = []
+    render()
+}
+
+const render = () => {
     const templateTwo = (
         <div>
             <h1>Count: {count}</h1>
             <button onClick={maisUm}>+1</button>
             <button onClick={menosUm}>-1</button>
             <button onClick={reset}>reset</button>
+            <button onClick={onRemoveAll}>Remove All</button>
+            <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
+            <p>{app.options.length}</p>
+            <form onSubmit={onFormSubmit}>
+                <input type="text" name="option"></input>
+                <button>Add option</button>
+            </form>
         </div>
     );
     ReactDOM.render(templateTwo, appRoot)
 }
 const appRoot = document.getElementById("app");
 
-renderCountApp()
+render()

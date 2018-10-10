@@ -1,34 +1,40 @@
-"use strict";
+'use strict';
 
 console.log('teste');
 
 // JSX - JavaScript XML
 
+var app = {
+    title: 'Indecision App',
+    subtitle: 'Put your life in the hands of a computer',
+    options: []
+};
+
 var template = React.createElement(
-    "div",
+    'div',
     null,
     React.createElement(
-        "h1",
+        'h1',
         null,
-        "Marcello"
+        'Marcello'
     ),
     React.createElement(
-        "p",
+        'p',
         null,
-        "This is some info here"
+        'This is some info here'
     ),
     React.createElement(
-        "ol",
+        'ol',
         null,
         React.createElement(
-            "li",
+            'li',
             null,
-            " Item one "
+            ' Item one '
         ),
         React.createElement(
-            "li",
+            'li',
             null,
-            " Item two "
+            ' Item two '
         )
     )
 );
@@ -41,9 +47,9 @@ var user = {
 
 function getLocation(location) {
     if (location) return React.createElement(
-        "p",
+        'p',
         null,
-        "My location is ",
+        'My location is ',
         location
     );
 }
@@ -51,50 +57,88 @@ function getLocation(location) {
 var count = 0;
 var menosUm = function menosUm() {
     count--;
-    renderCountApp();
-    console.log("menos um");
+    render();
 };
 
 var maisUm = function maisUm() {
     count++;
-    renderCountApp();
-    console.log("mais um");
+    render();
 };
 
 var reset = function reset() {
     count = 0;
-    renderCountApp();
-    console.log("reset");
+    render();
 };
 
-var renderCountApp = function renderCountApp() {
+var onFormSubmit = function onFormSubmit(e) {
+    e.preventDefault();
+    var option = e.target.elements.option.value;
+
+    if (option) {
+        app.options.push(option);
+        e.target.elements.option.value = '';
+        render();
+    }
+};
+
+var onRemoveAll = function onRemoveAll() {
+    app.options = [];
+    render();
+};
+
+var render = function render() {
     var templateTwo = React.createElement(
-        "div",
+        'div',
         null,
         React.createElement(
-            "h1",
+            'h1',
             null,
-            "Count: ",
+            'Count: ',
             count
         ),
         React.createElement(
-            "button",
+            'button',
             { onClick: maisUm },
-            "+1"
+            '+1'
         ),
         React.createElement(
-            "button",
+            'button',
             { onClick: menosUm },
-            "-1"
+            '-1'
         ),
         React.createElement(
-            "button",
+            'button',
             { onClick: reset },
-            "reset"
+            'reset'
+        ),
+        React.createElement(
+            'button',
+            { onClick: onRemoveAll },
+            'Remove All'
+        ),
+        React.createElement(
+            'p',
+            null,
+            app.options.length > 0 ? 'Here are your options' : 'No options'
+        ),
+        React.createElement(
+            'p',
+            null,
+            app.options.length
+        ),
+        React.createElement(
+            'form',
+            { onSubmit: onFormSubmit },
+            React.createElement('input', { type: 'text', name: 'option' }),
+            React.createElement(
+                'button',
+                null,
+                'Add option'
+            )
         )
     );
     ReactDOM.render(templateTwo, appRoot);
 };
 var appRoot = document.getElementById("app");
 
-renderCountApp();
+render();
