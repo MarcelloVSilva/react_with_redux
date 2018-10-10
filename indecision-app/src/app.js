@@ -23,17 +23,25 @@ function getLocation(location) {
     if (location) return <p>My location is {location}</p>
 }
 
+let count = 0 
+const menosUm = () => {
+    console.log("menos um")
+}
+
+const maisUm = () => {
+    console.log("mais um")
+}
+
+const reset = () => {
+    console.log("reset")
+}
+
 const templateTwo = (
     <div>
-
-        <h1>There is the templateTwo</h1>
-        <h1>{user.name ? user.name : 'Ninguém'}</h1>
-        {(user.age && user.age >= 23) && <p>My age is {user.age}</p>}
-        {getLocation(user.location)}
-        <ol>
-            <li> Item one </li>
-            <li> Item two </li>
-        </ol>
+        <h1>Count: {count}</h1>
+        <button onClick={maisUm}>+1</button>
+        <button onClick={menosUm}>-1</button>
+        <button onClick={reset}>reset</button>
     </div>
 );
 const appRoot = document.getElementById("app");

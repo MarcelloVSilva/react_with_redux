@@ -1,33 +1,91 @@
-'use strict';
+"use strict";
 
-function add(x, y) {
-    return x + y;
-}
+console.log('teste');
 
-console.log(add(10, 2, 111));
+// JSX - JavaScript XML
+
+var template = React.createElement(
+    "div",
+    null,
+    React.createElement(
+        "h1",
+        null,
+        "Marcello"
+    ),
+    React.createElement(
+        "p",
+        null,
+        "This is some info here"
+    ),
+    React.createElement(
+        "ol",
+        null,
+        React.createElement(
+            "li",
+            null,
+            " Item one "
+        ),
+        React.createElement(
+            "li",
+            null,
+            " Item two "
+        )
+    )
+);
 
 var user = {
-    name: 'Marcello',
-    cities: ['Inhumas, Goiânia'],
-    printCities: function printCities() {
-        return this.cities.map(function (city) {
-            return city;
-        });
-    }
+    name: "Marcello",
+    age: 23,
+    location: "Goiânia - Goiás - Brazil"
 };
 
-console.log(user.printCities());
+function getLocation(location) {
+    if (location) return React.createElement(
+        "p",
+        null,
+        "My location is ",
+        location
+    );
+}
 
-var multiplayer = {
-    numbers: [1, 2, 3, 4, 5],
-    multiplyBy: 2,
-    multiply: function multiply() {
-        var _this = this;
-
-        return this.numbers.map(function (number) {
-            return number * _this.multiplyBy;
-        });
-    }
+var count = 0;
+var menosUm = function menosUm() {
+    console.log("menos um");
 };
 
-console.log(multiplayer.multiply());
+var maisUm = function maisUm() {
+    console.log("mais um");
+};
+
+var reset = function reset() {
+    console.log("reset");
+};
+
+var templateTwo = React.createElement(
+    "div",
+    null,
+    React.createElement(
+        "h1",
+        null,
+        "Count: ",
+        count
+    ),
+    React.createElement(
+        "button",
+        { onClick: maisUm },
+        "+1"
+    ),
+    React.createElement(
+        "button",
+        { onClick: menosUm },
+        "-1"
+    ),
+    React.createElement(
+        "button",
+        { onClick: reset },
+        "reset"
+    )
+);
+var appRoot = document.getElementById("app");
+
+ReactDOM.render(templateTwo, appRoot);
