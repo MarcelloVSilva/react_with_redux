@@ -25,25 +25,35 @@ function getLocation(location) {
 
 let count = 0 
 const menosUm = () => {
+    count--
+    renderCountApp()
     console.log("menos um")
 }
 
 const maisUm = () => {
+    count++
+    renderCountApp()
     console.log("mais um")
 }
 
 const reset = () => {
+    count = 0
+    renderCountApp()
     console.log("reset")
 }
 
-const templateTwo = (
-    <div>
-        <h1>Count: {count}</h1>
-        <button onClick={maisUm}>+1</button>
-        <button onClick={menosUm}>-1</button>
-        <button onClick={reset}>reset</button>
-    </div>
-);
+
+const renderCountApp = () => {
+    const templateTwo = (
+        <div>
+            <h1>Count: {count}</h1>
+            <button onClick={maisUm}>+1</button>
+            <button onClick={menosUm}>-1</button>
+            <button onClick={reset}>reset</button>
+        </div>
+    );
+    ReactDOM.render(templateTwo, appRoot)
+}
 const appRoot = document.getElementById("app");
 
-ReactDOM.render(templateTwo, appRoot)
+renderCountApp()

@@ -50,42 +50,51 @@ function getLocation(location) {
 
 var count = 0;
 var menosUm = function menosUm() {
+    count--;
+    renderCountApp();
     console.log("menos um");
 };
 
 var maisUm = function maisUm() {
+    count++;
+    renderCountApp();
     console.log("mais um");
 };
 
 var reset = function reset() {
+    count = 0;
+    renderCountApp();
     console.log("reset");
 };
 
-var templateTwo = React.createElement(
-    "div",
-    null,
-    React.createElement(
-        "h1",
+var renderCountApp = function renderCountApp() {
+    var templateTwo = React.createElement(
+        "div",
         null,
-        "Count: ",
-        count
-    ),
-    React.createElement(
-        "button",
-        { onClick: maisUm },
-        "+1"
-    ),
-    React.createElement(
-        "button",
-        { onClick: menosUm },
-        "-1"
-    ),
-    React.createElement(
-        "button",
-        { onClick: reset },
-        "reset"
-    )
-);
+        React.createElement(
+            "h1",
+            null,
+            "Count: ",
+            count
+        ),
+        React.createElement(
+            "button",
+            { onClick: maisUm },
+            "+1"
+        ),
+        React.createElement(
+            "button",
+            { onClick: menosUm },
+            "-1"
+        ),
+        React.createElement(
+            "button",
+            { onClick: reset },
+            "reset"
+        )
+    );
+    ReactDOM.render(templateTwo, appRoot);
+};
 var appRoot = document.getElementById("app");
 
-ReactDOM.render(templateTwo, appRoot);
+renderCountApp();
