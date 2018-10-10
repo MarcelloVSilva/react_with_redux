@@ -61,6 +61,7 @@ const onRemoveAll = () => {
     render()
 }
 
+const numbers = [1, 2, 3, 4, 5, 6, 7]
 const render = () => {
     const templateTwo = (
         <div>
@@ -69,6 +70,9 @@ const render = () => {
             <button onClick={menosUm}>-1</button>
             <button onClick={reset}>reset</button>
             <button onClick={onRemoveAll}>Remove All</button>
+            {
+                app.options.map((opt, idx) => <p key={idx}>Option: {opt}</p>)
+            }
             <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
             <p>{app.options.length}</p>
             <form onSubmit={onFormSubmit}>

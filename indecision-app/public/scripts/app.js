@@ -86,6 +86,7 @@ var onRemoveAll = function onRemoveAll() {
     render();
 };
 
+var numbers = [1, 2, 3, 4, 5, 6, 7];
 var render = function render() {
     var templateTwo = React.createElement(
         'div',
@@ -116,6 +117,14 @@ var render = function render() {
             { onClick: onRemoveAll },
             'Remove All'
         ),
+        app.options.map(function (opt, idx) {
+            return React.createElement(
+                'p',
+                { key: idx },
+                'Option: ',
+                opt
+            );
+        }),
         React.createElement(
             'p',
             null,
