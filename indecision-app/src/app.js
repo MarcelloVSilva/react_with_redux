@@ -2,7 +2,7 @@ console.log('teste')
 
 // JSX - JavaScript XML
 
-var template = (
+const template = (
     <div>
         <h1>Marcello</h1>
         <p>This is some info here</p>
@@ -13,7 +13,7 @@ var template = (
     </div>
 );
 
-var user = {
+const user = {
     name: "Marcello",
     age: 23,
     location: "Goiânia - Goiás - Brazil"
@@ -23,7 +23,7 @@ function getLocation(location) {
     if (location) return <p>My location is {location}</p>
 }
 
-var templateTwo = (
+const templateTwo = (
     <div>
 
         <h1>There is the templateTwo</h1>
@@ -36,6 +36,6 @@ var templateTwo = (
         </ol>
     </div>
 );
-var appRoot = document.getElementById("app");
+const appRoot = document.getElementById("app");
 
 ReactDOM.render(templateTwo, appRoot)
