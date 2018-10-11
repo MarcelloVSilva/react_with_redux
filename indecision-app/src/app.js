@@ -1,88 +1,67 @@
-console.log('teste')
-
-// JSX - JavaScript XML
-
-const app = {
-    title: 'Indecision App',
-    subtitle: 'Put your life in the hands of a computer',
-    options: []
-  };
-
-const template = (
-    <div>
-        <h1>Marcello</h1>
-        <p>This is some info here</p>
-        <ol>
-            <li> Item one </li>
-            <li> Item two </li>
-        </ol>
-    </div>
-);
-
-const user = {
-    name: "Marcello",
-    age: 23,
-    location: "Goiânia - Goiás - Brazil"
-}
-
-function getLocation(location) {
-    if (location) return <p>My location is {location}</p>
-}
-
-let count = 0 
-const menosUm = () => {
-    count--
-    render()
-}
-
-const maisUm = () => {
-    count++
-    render()
-}
-
-const reset = () => {
-    count = 0
-    render()
-}
-
-const onFormSubmit = (e) => {
-    e.preventDefault()
-    const option = e.target.elements.option.value;
-
-    if (option) {
-      app.options.push(option);
-      e.target.elements.option.value = '';
-      render();
+class IndecisionApp extends React.Component {
+    render() {
+        return (
+            <div>
+                <Header />
+                <Action />
+                <Options />
+                <AddOptions />
+            </div>
+        )
     }
 }
 
-const onRemoveAll = () => {
-    app.options = []
-    render()
+class Header extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1>Indecision</h1>
+                <h2>Put yout life in the hands of computer</h2>
+            </div>
+        )
+    }
 }
 
-const numbers = [1, 2, 3, 4, 5, 6, 7]
-const render = () => {
-    const templateTwo = (
-        <div>
-            <h1>Count: {count}</h1>
-            <button onClick={maisUm}>+1</button>
-            <button onClick={menosUm}>-1</button>
-            <button onClick={reset}>reset</button>
-            <button onClick={onRemoveAll}>Remove All</button>
-            {
-                app.options.map((opt, idx) => <p key={idx}>Option: {opt}</p>)
-            }
-            <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
-            <p>{app.options.length}</p>
-            <form onSubmit={onFormSubmit}>
-                <input type="text" name="option"></input>
-                <button>Add option</button>
-            </form>
-        </div>
-    );
-    ReactDOM.render(templateTwo, appRoot)
+class Action extends React.Component {
+    render() {
+        return (
+            <div>
+                <button>What should i do</button>
+            </div>
+        )
+    }
 }
-const appRoot = document.getElementById("app");
 
-render()
+class Options extends React.Component {
+    render() {
+        return (
+            <div>
+                <Option/>
+            </div>
+        )
+    }
+}
+
+class Option extends React.Component {
+    render() {
+        return (
+            <div>
+                <li>item 1</li>
+                <li>item 2</li>
+                <li>item 3</li>
+            </div>
+        )
+    }
+}
+
+class AddOptions extends React.Component {
+    render() {
+        return (
+            <div>
+                AddOptions here
+            </div>
+        )
+    }
+}
+
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'))
