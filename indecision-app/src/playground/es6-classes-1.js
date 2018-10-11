@@ -9,12 +9,32 @@ class Person {
     getDescription() {
         return `Tenho ${this.age} anos`
     }
-
 }
 
-const me = new Person('Marcello Victor', 23);
-console.log(me.getGretting(), me.getDescription());
+class Student extends Person {
+    constructor(name, age, major){
+        super(name, age)
+        this.major = major
+    }
+    getDescription() {
+        return super.getDescription()
+    }
+}
 
-const other = new Person();
-console.log(other.getGretting(), other.getDescription());
+class Traveler extends Person{
+    constructor(name, age, homeLocation){
+        super(name, age)
+        this.homeLocation = homeLocation
+
+    }
+    getGretting(){
+        return `Eu sou turista de${this.homeLocation}`
+    }
+}
+
+const me = new Traveler('Marcello Victor', 23, 'Inhumas');
+console.log({me});
+
+const other = new Student();
+console.log(other.getDescription());
 
