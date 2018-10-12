@@ -20,7 +20,6 @@ var IndecisionApp = function (_React$Component) {
     _this.handlePick = _this.handlePick.bind(_this);
     _this.handleAddOption = _this.handleAddOption.bind(_this);
     _this.removeSpecificOption = _this.removeSpecificOption.bind(_this);
-    debugger;
     _this.state = {
       options: props.options
     };

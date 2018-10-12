@@ -5,7 +5,6 @@ class IndecisionApp extends React.Component {
     this.handlePick = this.handlePick.bind(this);
     this.handleAddOption = this.handleAddOption.bind(this);
     this.removeSpecificOption = this.removeSpecificOption.bind(this);
-    debugger
     this.state = {
       options: props.options
     };
