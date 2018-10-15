@@ -8,6 +8,19 @@ class Counter extends React.Component {
         this.menosUm = this.menosUm.bind(this)
         this.reset = this.reset.bind(this)
     }
+    componentDidMount() {
+        const stringCount = localStorage.getItem('count');
+        const count = parseInt(stringCount, 10);
+    
+        if (!isNaN(count)) {
+          this.setState(() => ({ count }));
+        }
+      }
+      componentDidUpdate(prevProps, prevState) {
+        if (prevState.count !== this.state.count) {
+          localStorage.setItem('count', this.state.count);
+        }
+      }
     maisUm() {
         this.setState({ count: this.state.count + 1 })
         console.log(this.state.count)
